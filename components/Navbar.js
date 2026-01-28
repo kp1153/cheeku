@@ -29,15 +29,15 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-[#006680] py-4 shadow-md sticky top-0 z-50">
-      <div className="w-full px-4"> {/* container को w-full किया ताकि पूरी चौड़ाई मिले */}
+    <nav className="bg-zinc-900 py-4 shadow-md sticky top-0 z-50">
+      <div className="w-full px-4">
         
         {/* DESKTOP VIEW */}
         <div className="hidden md:block">
           <div className="text-center mb-6">
             <Link href="/">
-              <h1 className="text-4xl font-bold text-white tracking-wide">
-                पशु चिकित्सक शुक्ला
+              <h1 className="text-4xl font-bold text-rose-700 tracking-wide">
+              Vet Life Care
               </h1>
             </Link>
           </div>
@@ -50,7 +50,7 @@ export default function Navbar() {
                   <button
                     key={item.targetId}
                     onClick={(e) => handleClick(e, item.targetId)}
-                    className="text-white font-bold text-sm lg:text-base hover:text-yellow-400 transition-colors whitespace-nowrap px-2"
+                    className="text-rose-700 font-bold text-sm lg:text-base hover:text-yellow-400 transition-colors whitespace-nowrap px-2"
                   >
                     {item.name}
                   </button>
@@ -58,7 +58,7 @@ export default function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="text-white font-bold text-sm lg:text-base hover:text-yellow-400 transition-colors whitespace-nowrap px-2"
+                    className="text-rose-700 font-bold text-sm lg:text-base hover:text-yellow-400 transition-colors whitespace-nowrap px-2"
                   >
                     {item.name}
                   </Link>
@@ -72,33 +72,33 @@ export default function Navbar() {
         <div className="md:hidden">
           <div className="flex justify-between items-center">
             <Link href="/">
-              <h1 className="text-xl font-bold text-white">
-                पशु चिकित्सक शुक्ला
+              <h1 className="text-xl font-bold text-rose-700">
+               Vet Life Care
               </h1>
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white border border-white/30 p-2 rounded"
+              className="text-rose-700 border border-white/30 p-2 rounded"
             >
               {isOpen ? "✖" : "☰"}
             </button>
           </div>
 
           {isOpen && (
-            <ul className="mt-4 bg-[#004d61] rounded-lg overflow-hidden">
+            <ul className="mt-4 bg-zinc-800 rounded-lg overflow-hidden">
               {menuItems.map((item) => (
                 <li key={item.targetId || item.href} className="border-b border-white/10 last:border-none">
                   {item.type === "scroll" ? (
                     <button
                       onClick={(e) => handleClick(e, item.targetId)}
-                      className="block w-full text-white text-center py-4 font-bold hover:bg-white hover:text-[#006680]"
+                      className="block w-full text-rose-700 text-center py-4 font-bold hover:bg-white hover:text-zinc-900"
                     >
                       {item.name}
                     </button>
                   ) : (
                     <Link
                       href={item.href}
-                      className="block text-white text-center py-4 font-bold hover:bg-white hover:text-[#006680]"
+                      className="block text-rose-700 text-center py-4 font-bold hover:bg-white hover:text-zinc-900"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}

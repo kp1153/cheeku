@@ -42,9 +42,9 @@ export default function HeroSection() {
       {/* NAME OVERLAY */}
       <div className="absolute inset-0 flex items-center justify-center text-center px-4">
         <h1 className="text-white text-3xl md:text-5xl font-bold leading-tight drop-shadow-xl">
-          डॉ. देवराज शुक्ला <br />
+          डॉ. सचिन पाल <br />
           <span className="text-yellow-300 text-4xl md:text-6xl">व</span> <br />
-          डॉ. अश्विनी कुमार शुक्ला
+          और उनके पिताश्री
         </h1>
       </div>
     </section>
