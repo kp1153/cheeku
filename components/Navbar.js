@@ -16,15 +16,11 @@ export default function Navbar() {
 
   const menuItems = [
     { name: "होम", href: "/", type: "link" },
-    { name: "गाय-भैंस रोग", targetId: "gay-bhains", type: "scroll" },
-    { name: "कुत्ते रोग", targetId: "kutte", type: "scroll" },
-    { name: "बिल्ली रोग", targetId: "billi", type: "scroll" },
-    { name: "भेड़-बकरी रोग", targetId: "bhed-bakri", type: "scroll" },
-    { name: "घोड़ा रोग", targetId: "ghoda", type: "scroll" },
-    { name: "ऊँट रोग", targetId: "oont", type: "scroll" },
-    { name: "सेवाएं", targetId: "seva", type: "scroll" },   ,
-    { name: "संपर्क करें", targetId: "sampark", type: "scroll" },
-   
+    { name: "उत्पाद", targetId: "products", type: "scroll" },
+    { name: "गाय-भैंस रोग", targetId: "gay-bhains", type: "scroll" }, 
+    { name: "भेड़-बकरी रोग", targetId: "bhed-bakri", type: "scroll" }, 
+    { name: "सेवाएं", targetId: "seva", type: "scroll" },       
+    { name: "संपर्क करें", targetId: "sampark", type: "scroll" }, 
   ];
 
   return (
