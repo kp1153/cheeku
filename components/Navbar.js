@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Navbar() {
@@ -24,20 +25,22 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-zinc-900 py-4 shadow-md sticky top-0 z-50">
+    <nav className="bg-zinc-900 py-0 shadow-md sticky top-0 z-50">
       <div className="w-full px-4">
         
         {/* DESKTOP VIEW */}
         <div className="hidden md:block">
           <div className="text-center mb-6">
             <Link href="/">
-              <h1 className="text-4xl font-bold text-rose-700 tracking-wide">
-              Vet Life Care
-              </h1>
+              <Image 
+                src="/logo.jpeg" 
+                alt="Vet Life Care Logo" 
+                width={200} 
+                height={80}
+                className="mx-auto"
+              />
             </Link>
           </div>
-
-          {/* मेनू - एकदम लेफ्ट से एकदम राइट तक एक लाइन में */}
           <div className="border-t border-white/20 pt-4">
             <div className="flex justify-between items-center w-full max-w-7xl mx-auto">
               {menuItems.map((item) => (
@@ -67,9 +70,12 @@ export default function Navbar() {
         <div className="md:hidden">
           <div className="flex justify-between items-center">
             <Link href="/">
-              <h1 className="text-xl font-bold text-rose-700">
-               Vet Life Care
-              </h1>
+              <Image 
+                src="/logo.jpeg" 
+                alt="Vet Life Care Logo" 
+                width={120} 
+                height={50}
+              />
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}

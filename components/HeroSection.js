@@ -1,15 +1,13 @@
 "use client";
-
 import { useEffect, useState } from "react";
 
 const images = [
-  "/1.jpg",
-  "/2.jpg",
-  "/3.jpg",
-  "/4.jpg",
-  "/5.jpg",
-  "/6.jpg",
-  "/7.jpg",
+  "/1.jpeg",
+  "/2.jpeg",
+  "/3.jpeg",
+  "/4.jpeg",
+  "/5.jpeg",
+  "/6.jpeg", 
 ];
 
 export default function HeroSection() {
@@ -19,7 +17,6 @@ export default function HeroSection() {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
     }, 3000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -30,15 +27,13 @@ export default function HeroSection() {
           key={index}
           src={src}
           alt={`Slide ${index + 1}`}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ${
             index === current ? "opacity-100" : "opacity-0"
           }`}
         />
       ))}
-
       {/* dark overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
-
       {/* NAME OVERLAY */}
       <div className="absolute inset-0 flex items-center justify-center text-center px-4">
         <h1 className="text-white text-3xl md:text-5xl font-bold leading-tight drop-shadow-xl">
