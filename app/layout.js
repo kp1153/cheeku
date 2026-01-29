@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "पशु चिकित्सक डॉ. देवराज शुक्ला और डॉ. अश्विनी कुमार शुक्ला",
-  description: "पशु चिकित्सा सेवाएं - गाय, भैंस, कुत्ते, बिल्ली, भेड़, बकरी के रोगों का उपचार",
+  title: "पशु चिकित्सक डॉ. सचिन पाल",
+  description: "पशु चिकित्सा सेवाएं - गाय, भैंस, भेड़, बकरी के रोगों का उपचार",
 };
 
 export default function RootLayout({ children }) {

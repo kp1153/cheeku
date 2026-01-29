@@ -5,10 +5,13 @@ export default function ContactSection() {
         <h2 className="text-3xl font-bold mb-6 text-[#006680]">संपर्क विवरण</h2>
         
         <div className="space-y-4 text-lg">
-          <p className="font-bold text-xl text-gray-900">अश्विनी कुमार शुक्ला</p>
+          <p className="font-bold text-xl text-gray-900">डॉ. सचिन पाल</p>
           <p className="text-[#006680] font-semibold">पशु चिकित्सक</p>
           <p className="leading-relaxed">
-            शुक्ला सदन, ग्रामः बैदौला-272189, सिद्धार्थनगर।
+            पिता: रामनारायण पाल,<br />
+            अहरक खास, अहरक,<br />
+            वाराणसी, रामईपट्टी,<br />
+            उत्तर प्रदेश, 221202
           </p>
         </div>
       </div>
