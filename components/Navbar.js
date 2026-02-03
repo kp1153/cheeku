@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const cartCount = 0; // बाद में context से लेना
 
   const handleClick = (e, targetId) => {
     e.preventDefault();
@@ -25,7 +26,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-zinc-900 py-0 shadow-md sticky top-0 z-50">
+    <nav className="bg-sky-200 py-0 shadow-md sticky top-0 z-50">
       <div className="w-full px-4">
         
         {/* DESKTOP VIEW */}
@@ -62,6 +63,11 @@ export default function Navbar() {
                   </Link>
                 )
               ))}
+
+              <Link href="/cart" className="text-rose-700 font-bold text-sm lg:text-base hover:text-yellow-400 transition-colors whitespace-nowrap px-2">
+                🛒 {cartCount > 0 && <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs ml-1">{cartCount}</span>}
+              </Link>
+
             </div>
           </div>
         </div>
@@ -77,12 +83,20 @@ export default function Navbar() {
                 height={50}
               />
             </Link>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-rose-700 border border-white/30 p-2 rounded"
-            >
-              {isOpen ? "✖" : "☰"}
-            </button>
+            <div className="flex items-center gap-4">
+              <Link href="/cart" className="text-rose-700 text-2xl relative">
+                🛒
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white px-1.5 py-0.5 rounded-full text-xs">{cartCount}</span>
+                )}
+              </Link>
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-rose-700 border border-white/30 p-2 rounded"
+              >
+                {isOpen ? "✖" : "☰"}
+              </button>
+            </div>
           </div>
 
           {isOpen && (
