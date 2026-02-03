@@ -1,11 +1,6 @@
 import crypto from 'crypto';
 import { NextResponse } from 'next/server';
-import { createClient } from '@libsql/client';
-
-const turso = createClient({
-  url: process.env.TURSO_DATABASE_URL,
-  authToken: process.env.TURSO_AUTH_TOKEN,
-});
+import { client } from '@/sanity/lib/client';
 
 export async function POST(req) {
   try {
@@ -17,6 +12,7 @@ export async function POST(req) {
       items
     } = await req.json();
 
+    // Verify signature
     const sign = razorpay_order_id + '|' + razorpay_payment_id;
     const expectedSign = crypto
       .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
@@ -26,31 +22,37 @@ export async function POST(req) {
     if (razorpay_signature === expectedSign) {
       const totalAmount = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-      const result = await turso.execute({
-        sql: `INSERT INTO orders (customer_name, customer_email, customer_phone, customer_address, total_amount, payment_id, order_id, status, items) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        args: [
-          customerDetails.name,
-          customerDetails.email || '',
-          customerDetails.phone,
-          `${customerDetails.address}, ${customerDetails.city}, ${customerDetails.state} - ${customerDetails.pincode}`,
-          totalAmount,
-          razorpay_payment_id,
-          razorpay_order_id,
-          'completed',
-          JSON.stringify(items)
-        ]
+      // Save order to Sanity
+      const order = await client.create({
+        _type: 'order',
+        customerName: customerDetails.name,
+        customerEmail: customerDetails.email || '',
+        customerPhone: customerDetails.phone,
+        customerAddress: `${customerDetails.address}, ${customerDetails.city}, ${customerDetails.state} - ${customerDetails.pincode}`,
+        totalAmount: totalAmount,
+        paymentId: razorpay_payment_id,
+        orderId: razorpay_order_id,
+        status: 'completed',
+        items: items,
+        createdAt: new Date().toISOString()
       });
 
       return NextResponse.json({
         success: true,
-        orderId: result.lastInsertRowid,
+        orderId: order._id,
         message: 'Payment verified successfully'
       });
     } else {
-      return NextResponse.json({ success: false, message: 'Invalid signature' }, { status: 400 });
+      return NextResponse.json({ 
+        success: false, 
+        message: 'Invalid signature' 
+      }, { status: 400 });
     }
   } catch (error) {
     console.error('Payment verification failed:', error);
-    return NextResponse.json({ success: false, error: 'Verification failed' }, { status: 500 });
+    return NextResponse.json({ 
+      success: false, 
+      error: 'Verification failed' 
+    }, { status: 500 });
   }
 }
