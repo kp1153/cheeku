@@ -71,6 +71,7 @@ export default function Afara() {
               </ul>
             </div>
           </div>
+
           {/* इलाज और दवाएं */}
           <div className="mb-8">
             <h3 className="text-2xl font-bold text-green-800 mb-4 flex items-center">
@@ -175,11 +176,11 @@ export default function Afara() {
             </div>
           </div>
 
-          {/* इमरजेंसी संकेत */}
+          {/* डॉक्टर को कब बुलाएं */}
           <div className="mb-8">
-            <h3 className="text-2xl font-bold text-red-700 mb-4 flex items-center">
-              <span className="text-3xl mr-3">⚠️</span>
-              तुरंत डॉक्टर से संपर्क करें यदि:
+            <h3 className="text-2xl font-bold text-green-800 mb-4 flex items-center">
+              <span className="text-3xl mr-3">🚨</span>
+              तुरंत डॉक्टर को बुलाएं अगर
             </h3>
             <div className="bg-red-100 p-6 rounded-lg border-2 border-red-500">
               <ul className="space-y-2 text-gray-800 font-medium">
@@ -196,14 +197,6 @@ export default function Afara() {
                 ⚡ नोट: गंभीर अफरे में ट्रोकार से गैस निकालनी पड़ती है - यह सिर्फ डॉक्टर ही कर सकते हैं!
               </p>
             </div>
-          </div>
-
-          {/* परामर्श बटन */}
-          <div className="text-center mt-8">
-            <button className="bg-green-700 hover:bg-green-800 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg transform transition hover:scale-105">
-              ऑनलाइन परामर्श बुक करें
-            </button>
-            <p className="text-gray-600 mt-3">विशेषज्ञ सलाह के लिए अभी संपर्क करें</p>
           </div>
 
         </div>
